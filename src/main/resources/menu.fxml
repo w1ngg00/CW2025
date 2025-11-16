@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" 
-    xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
-    fx:controller="com.comp2042.view.MainMenuController"
-    style="-fx-background-image: url('@backgrounds/menu_background.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat;">
+<AnchorPane xmlns="http://javafx.com/javafx/21" 
+    xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="com.comp2042.view.MainMenuController">
     
     <children>
-        <VBox alignment="CENTER"
-              maxHeight="-Infinity" maxWidth="-Infinity"
-              minHeight="-Infinity" minWidth="-Infinity"
-              prefHeight="600.0" prefWidth="400.0" spacing="20.0"
+        <ImageView AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" 
+                   AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0"
+                   fitWidth="1920" fitHeight="1080" preserveRatio="false">
+            <Image url="@backgrounds/menu_background.png" />
+        </ImageView>
+        
+        <VBox alignment="CENTER" spacing="30.0"
               AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" 
               AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0"
               style="-fx-background-color: rgba(0, 0, 0, 0.3);">
             <children>
                 <Label text="TetrisJFX">
                     <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="64.0" />
                     </font>
                     <style>-fx-text-fill: white;</style>
                 </Label>
                 <Label text="Select Level">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
                     <style>-fx-text-fill: white;</style>
                 </Label>
-                <Button fx:id="easyButton" mnemonicParsing="false" onAction="#onEasyClicked" prefWidth="120.0" text="Easy" />
-                <Button fx:id="normalButton" mnemonicParsing="false" onAction="#onNormalClicked" prefWidth="120.0" text="Normal" />
-                <Button fx:id="hardButton" mnemonicParsing="false" onAction="#onHardClicked" prefWidth="120.0" text="Hard" />
-                <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingClicked" prefWidth="120.0" text="Settings" />
-                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitClicked" prefWidth="120.0" text="Exit" />
+                <Button fx:id="easyButton" mnemonicParsing="false" onAction="#onEasyClicked" prefWidth="180.0" text="Easy" style="-fx-font-size: 16;" />
+                <Button fx:id="normalButton" mnemonicParsing="false" onAction="#onNormalClicked" prefWidth="180.0" text="Normal" style="-fx-font-size: 16;" />
+                <Button fx:id="hardButton" mnemonicParsing="false" onAction="#onHardClicked" prefWidth="180.0" text="Hard" style="-fx-font-size: 16;" />
+                <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingClicked" prefWidth="180.0" text="Settings" style="-fx-font-size: 16;" />
+                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitClicked" prefWidth="180.0" text="Exit" style="-fx-font-size: 16;" />
             </children>
             <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                <Insets bottom="60.0" left="60.0" right="60.0" top="60.0" />
             </padding>
         </VBox>
     </children>
