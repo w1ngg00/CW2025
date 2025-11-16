@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" 
+    xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="com.comp2042.view.MainMenuController">
+    
+    <children>
+        <ImageView fitHeight="600.0" fitWidth="400.0" preserveRatio="false">
+            <Image url="@backgrounds/menu_background.png" />
+        </ImageView>
+        
+        <VBox alignment="CENTER"
+              maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity"
+              prefHeight="600.0" prefWidth="400.0" spacing="20.0"
+              AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" 
+              AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <children>
+                <Label text="TetrisJFX">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label text="Select Level" />
+                <Button fx:id="easyButton" mnemonicParsing="false" onAction="#onEasyClicked" prefWidth="120.0" text="Easy" />
+                <Button fx:id="normalButton" mnemonicParsing="false" onAction="#onNormalClicked" prefWidth="120.0" text="Normal" />
+                <Button fx:id="hardButton" mnemonicParsing="false" onAction="#onHardClicked" prefWidth="120.0" text="Hard" />
+                <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingClicked" prefWidth="120.0" text="Settings" />
+                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitClicked" prefWidth="120.0" text="Exit" />
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
