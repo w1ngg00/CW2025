@@ -6,6 +6,7 @@ import com.comp2042.model.Difficulty;
 import com.comp2042.model.GameSettings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -13,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -91,7 +94,7 @@ public class Main extends Application {
      * physical screen size we:
      *  - create a Scene sized to the screen visual bounds
      *  - wrap the loaded root in a Group, scale the Group to fit while preserving aspect ratio
-     *  - center the scaled group inside the Scene
+     *  - center the scaled group inside the Scene using a StackPane (this keeps the game perfectly centered)
      */
     public void showGameScreen(Difficulty difficulty) {
         try {
@@ -112,26 +115,34 @@ public class Main extends Application {
             double logicalW = GameConfig.WINDOW_WIDTH;
             double logicalH = GameConfig.WINDOW_HEIGHT;
 
+            // ensure the loaded root uses the logical size so its bounds are predictable
+            if (root instanceof Region) {
+                Region r = (Region) root;
+                r.setPrefSize(logicalW, logicalH);
+                r.setMinSize(logicalW, logicalH);
+                r.setMaxSize(logicalW, logicalH);
+                r.resize(logicalW, logicalH);
+            } else {
+                root.resize(logicalW, logicalH);
+            }
+
             // compute uniform scale to fit the screen while preserving aspect ratio
             double scaleX = screenW / logicalW;
             double scaleY = screenH / logicalH;
             double scale = Math.min(scaleX, scaleY);
 
-            // wrap root in a Group so we can scale/translate it
+            // wrap root in a Group so we can scale it (Group won't force layout size)
             Group scaledGroup = new Group(root);
             scaledGroup.setScaleX(scale);
             scaledGroup.setScaleY(scale);
 
-            // center the scaled content in the scene
-            double scaledContentW = logicalW * scale;
-            double scaledContentH = logicalH * scale;
-            double translateX = Math.max(0, (screenW - scaledContentW) / 2.0);
-            double translateY = Math.max(0, (screenH - scaledContentH) / 2.0);
-            scaledGroup.setTranslateX(translateX);
-            scaledGroup.setTranslateY(translateY);
+            // place scaled group inside a StackPane so it is centered in the Scene
+            StackPane container = new StackPane(scaledGroup);
+            StackPane.setAlignment(scaledGroup, Pos.CENTER);
+            container.setPrefSize(screenW, screenH);
 
             // create scene sized to the screen so background and other elements fill fullscreen
-            Scene scene = new Scene(scaledGroup, screenW, screenH);
+            Scene scene = new Scene(container, screenW, screenH);
 
             primaryStage.setScene(scene);
             primaryStage.setFullScreen(true); // ensure fullscreen remains enabled
