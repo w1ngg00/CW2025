@@ -46,6 +46,8 @@ public class Main extends Application {
 
         this.primaryStage = primaryStage;
         primaryStage.setTitle("TetrisJFX");
+
+        // Enable fullscreen mode
         primaryStage.setFullScreen(true);
         primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
@@ -54,6 +56,9 @@ public class Main extends Application {
 
         // Show the first screen
         showMainMenuScreen();
+
+        // Show the stage
+        primaryStage.show();
     }
 
     /**
@@ -110,6 +115,7 @@ public class Main extends Application {
             c.setMainApp(this);
             GameSettings settings = new GameSettings();
             primaryStage.setScene(new Scene(root, GameConfig.WINDOW_WIDTH, GameConfig.WINDOW_HEIGHT));
+            primaryStage.setFullScreen(true);
             // handles selected difficulty (pass Difficulty Enum to GameController)
             new GameController(c, difficulty, clearRowSoundPlayer, speedUpSoundPlayer, settings);
         } catch (IOException e) { e.printStackTrace(); }
@@ -131,6 +137,7 @@ public class Main extends Application {
             controller.setMainApp(this);
 
             primaryStage.setScene(new Scene(root, 420, 510));
+            primaryStage.setFullScreen(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
