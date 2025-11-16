@@ -11,6 +11,8 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -95,6 +97,7 @@ public class Main extends Application {
      *  - create a Scene sized to the screen visual bounds
      *  - wrap the loaded root in a Group, scale the Group to fit while preserving aspect ratio
      *  - center the scaled group inside the Scene using a StackPane (this keeps the game perfectly centered)
+     *  - render a fullscreen background image behind the scaled game content so there is no white area
      */
     public void showGameScreen(Difficulty difficulty) {
         try {
@@ -136,10 +139,31 @@ public class Main extends Application {
             scaledGroup.setScaleX(scale);
             scaledGroup.setScaleY(scale);
 
-            // place scaled group inside a StackPane so it is centered in the Scene
-            StackPane container = new StackPane(scaledGroup);
-            StackPane.setAlignment(scaledGroup, Pos.CENTER);
+            // center the scaled content inside the Scene using a StackPane
+            StackPane container = new StackPane();
             container.setPrefSize(screenW, screenH);
+
+            // load a fullscreen background image for the game (falls back to solid color if not found)
+            try {
+                URL bgUrl = getClass().getResource("/backgrounds/game_background.png");
+                if (bgUrl != null) {
+                    Image bgImage = new Image(bgUrl.toExternalForm(), screenW, screenH, false, true);
+                    ImageView bgView = new ImageView(bgImage);
+                    bgView.setFitWidth(screenW);
+                    bgView.setFitHeight(screenH);
+                    bgView.setPreserveRatio(false);
+                    container.getChildren().add(bgView); // added first => at back
+                } else {
+                    // optional: set a dark background color if image missing
+                    container.setStyle("-fx-background-color: #1a1a1a;");
+                }
+            } catch (Exception ex) {
+                container.setStyle("-fx-background-color: #1a1a1a;");
+            }
+
+            // add the scaled game content centered above the background
+            container.getChildren().add(scaledGroup);
+            StackPane.setAlignment(scaledGroup, Pos.CENTER);
 
             // create scene sized to the screen so background and other elements fill fullscreen
             Scene scene = new Scene(container, screenW, screenH);
