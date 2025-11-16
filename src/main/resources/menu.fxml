@@ -23,12 +23,6 @@
               AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0"
               style="-fx-background-color: rgba(0, 0, 0, 0.3);">
             <children>
-                <Label text="TetrisJFX">
-                    <font>
-                        <Font name="System Bold" size="64.0" />
-                    </font>
-                    <style>-fx-text-fill: white;</style>
-                </Label>
                 <Label text="Select Level">
                     <font>
                         <Font size="24.0" />
