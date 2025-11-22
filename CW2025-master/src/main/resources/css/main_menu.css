@@ -1,0 +1,23 @@
+/* * menu.css
+ * メインメニュー、難易度選択画面用
+ */
+
+.menu-title {
+    -fx-font-family: "Let's go Digital";
+    -fx-font-size: 48px;
+    -fx-text-fill: yellow;
+    /* 影をつけて視認性を向上 */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0, 0, 2);
+}
+
+.menu-label {
+    -fx-font-family: "Let's go Digital";
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+}
+
+/* メニュー画面内の特定のボタン調整 */
+.menu-background .button {
+     -fx-font-family: "Let's go Digital";
+     -fx-font-size: 18px;
+ }

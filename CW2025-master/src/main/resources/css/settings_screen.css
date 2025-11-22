@@ -1,0 +1,30 @@
+/* * settings_screen.css
+ * 設定画面専用スタイル
+ */
+
+/* スライダーの目盛りラベル */
+.slider .axis-tick-label {
+    -fx-text-fill: white; /* 文字色を白に */
+    -fx-fill: white;      /*念のためfillも白に */
+    -fx-font-family: "Let's go Digital"; /* デジタルフォント適用 */
+    -fx-font-size: 14px;  /* 少し大きく */
+}
+
+/* スライダーの軌道（線）を見やすく */
+.slider .track {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 透明なスクロールペイン背景 */
+.transparent-scroll-pane {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+}
+
+.transparent-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.transparent-scroll-pane .content {
+    -fx-background-color: transparent;
+}

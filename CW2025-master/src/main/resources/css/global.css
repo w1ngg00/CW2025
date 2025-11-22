@@ -1,0 +1,58 @@
+/* * global.css
+ * すべての画面で読み込む共通設定
+ */
+
+/* フォント定義：フォルダ階層が変わるためパスを調整しています */
+@font-face {
+    font-family: "Let's go Digital";
+    src: url("../fonts/digital.ttf");  /* ← cssフォルダを出てfontsフォルダへ */
+}
+
+/* 全体の背景 */
+.root {
+    -fx-background-image: url("../images/background_image.png");
+}
+
+/* 共通ボタンデザイン (ipad-dark-grey) */
+.ipad-dark-grey {
+    -fx-background-color: linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+    linear-gradient(#020b02, #3a3a3a),
+    linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
+    linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+    linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
+    -fx-background-insets: 0, 1, 4, 5, 6;
+    -fx-background-radius: 9, 8, 5, 4, 3;
+    -fx-padding: 8;
+    -fx-font-family: "Let's go Digital";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.2), 1, 0.0, 0, 1);
+}
+
+/* 共通レイアウト用 */
+.vbox {
+    -fx-spacing: 12;
+}
+
+/* ヘルプなどの小文字情報 */
+.helpInfo {
+    -fx-fill: white;
+    -fx-alignment: center-left;
+    -fx-text-alignment: left;
+    -fx-font-size: 10px;
+}
+
+/* 透明なスクロールペイン（設定画面などで使用） */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}

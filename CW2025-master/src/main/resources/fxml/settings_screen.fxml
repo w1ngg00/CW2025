@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import java.net.URL?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.comp2042.view.SettingController"
+      prefHeight="600.0" prefWidth="400.0" spacing="20"
+      alignment="CENTER" styleClass="menu-background">
+
+    <VBox spacing="5" maxWidth="300">
+        <Label text="Clear Row Sound" styleClass="menu-label"/>
+        <Slider fx:id="clearRowVolumeSlider" value="100" showTickLabels="true"/>
+    </VBox>
+
+    <VBox spacing="5" maxWidth="300">
+        <Label text="Speed Up Sound" styleClass="menu-label"/>
+        <Slider fx:id="speedUpVolumeSlider" value="100" showTickLabels="true"/>
+    </VBox>
+
+    <Label text="Keybinding" styleClass="menu-label"/>
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" maxWidth="350" styleClass="transparent-scroll-pane">
+        <GridPane alignment="CENTER" hgap="10" vgap="10" style="-fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 10; -fx-padding: 10;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="120.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="150.0"/>
+            </columnConstraints>
+
+            <Label text="Move Left" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="moveLeftKeyButton" onAction="#onChangeMoveLeft" prefWidth="150.0" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Move Right" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="moveRightKeyButton" onAction="#onChangeMoveRight" prefWidth="150.0" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Rotate Left" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="rotateLeftKeyButton" onAction="#onChangeRotateLeft" prefWidth="150.0" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Rotate Right" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="rotateRightKeyButton" onAction="#onChangeRotateRight" prefWidth="150.0" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Soft Drop" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="softDropKeyButton" onAction="#onChangeSoftDrop" prefWidth="150.0" GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Hard Drop" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="hardDropKeyButton" onAction="#onChangeHardDrop" prefWidth="150.0" GridPane.rowIndex="5" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Hold" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="holdKeyButton" onAction="#onChangeHold" prefWidth="150.0" GridPane.rowIndex="6" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Move to Left Most" GridPane.rowIndex="7" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="moveLeftMostKeyButton" onAction="#onChangeLeftMost" prefWidth="150.0" GridPane.rowIndex="7" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Label text="Move to Right Most" GridPane.rowIndex="8" GridPane.columnIndex="0" styleClass="menu-label"/>
+            <Button fx:id="moveRightMostKeyButton" onAction="#onChangeRightMost" prefWidth="150.0" GridPane.rowIndex="8" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+
+            <Button fx:id="resetButton" text="Reset to Defaults" onAction="#onResetKeys" prefWidth="150.0" GridPane.rowIndex="9" GridPane.columnIndex="1" styleClass="ipad-dark-grey"/>
+        </GridPane>
+    </ScrollPane>
+
+    <Button text="go to menu" onAction="#goToMainMenu" styleClass="ipad-dark-grey"/>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+
+    <stylesheets>
+        <URL value="@../css/global.css"/>
+        <URL value="@../css/main_menu.css" />
+        <URL value="@../css/settings_screen.css"/>
+    </stylesheets>
+</VBox>

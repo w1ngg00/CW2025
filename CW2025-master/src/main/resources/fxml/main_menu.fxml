@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox alignment="CENTER"
+      maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="400.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.comp2042.view.MainMenuController"
+      styleClass="menu-background">
+
+    <Label text="TetrisJFX" styleClass="menu-title" />
+
+    <Label text="Select Level" styleClass="menu-label"/>
+    <Button mnemonicParsing="false" onAction="#onEasyClicked" prefWidth="120.0" text="Easy" styleClass="ipad-dark-grey"/>
+    <Button mnemonicParsing="false" onAction="#onNormalClicked" prefWidth="120.0" text="Normal" styleClass="ipad-dark-grey"/>
+    <Button mnemonicParsing="false" onAction="#onHardClicked" prefWidth="120.0" text="Hard" styleClass="ipad-dark-grey"/>
+    <Button fx:id="extraHardButton" mnemonicParsing="false" onAction="#onExtraHardClicked" prefWidth="120.0" text="Extra Hard" visible="false" styleClass="ipad-dark-grey"/>
+
+    <Button mnemonicParsing="false" onAction="#onSettingClicked" prefWidth="120.0" text="Settings" styleClass="ipad-dark-grey"/>
+
+    <Button mnemonicParsing="false" onAction="#onExitClicked" prefWidth="120.0" text="Exit" styleClass="ipad-dark-grey"/>
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <stylesheets>
+        <URL value="@../css/global.css"/>
+        <URL value="@../css/main_menu.css"/>
+    </stylesheets>
+</VBox>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comp2042.view.GameOverPanel?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.comp2042.view.GuiController"
+           style="-fx-background-color: #1e1e1e;">
+
+    <!-- CENTER EVERYTHING PERFECTLY -->
+    <VBox alignment="CENTER" spacing="30" StackPane.alignment="CENTER">
+
+        <!-- Score Row -->
+        <HBox alignment="CENTER" spacing="50">
+            <Label text="Score:" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            <Label fx:id="scoreLabel" text="0" style="-fx-text-fill: lime; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="Lines:" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            <Label fx:id="linesLabel" text="0" style="-fx-text-fill: lime; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="High:" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            <Label fx:id="highScoreLabel" text="0" style="-fx-text-fill: orange; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+        </HBox>
+
+        <!-- Main Game Area -->
+        <HBox alignment="CENTER" spacing="60">
+
+            <!-- HOLD -->
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="HOLD" style="-fx-text-fill: #cccccc; -fx-font-size: 20px;"/>
+                <GridPane fx:id="holdBrickPanel" style="-fx-background-color: #111; -fx-padding: 12; -fx-background-radius: 8;"/>
+            </VBox>
+
+            <!-- MAIN GAME BOARD (centered, no layoutX/Y!) -->
+            <Group fx:id="boardGroup">
+                 <!-- Background board -->
+                 <GridPane fx:id="gamePanel"
+                           hgap="1" vgap="1"
+                           style="-fx-background-color: #000; -fx-padding: 2;"
+                           prefWidth="400" prefHeight="800"/>
+ 
+                 <!-- Falling brick (moves on top) -->
+                 <GridPane fx:id="brickPanel" hgap="1" vgap="1"/>
+ 
+                 <!-- Ghost piece -->
+                 <GridPane fx:id="ghostBrickPanel" hgap="1" vgap="1" opacity="0.3"/>
+ 
+                 <!-- Notifications -->
+                 <Group fx:id="groupNotification"/>
+            </Group>
+
+            <!-- NEXT QUEUE -->
+            <VBox alignment="CENTER" spacing="12">
+                <Label text="NEXT" style="-fx-text-fill: #cccccc; -fx-font-size: 20px;"/>
+                <GridPane fx:id="nextBrickPanel"     style="-fx-background-color: #111; -fx-padding: 12; -fx-background-radius: 8;"/>
+                <GridPane fx:id="nextBrickPanel2"    style="-fx-background-color: #111; -fx-padding: 10; -fx-background-radius: 8;"/>
+                <GridPane fx:id="nextBrickPanel3"    style="-fx-background-color: #111; -fx-padding: 10; -fx-background-radius: 8;"/>
+                <GridPane fx:id="nextBrickPanel4"    style="-fx-background-color: #111; -fx-padding: 10; -fx-background-radius: 8;"/>
+            </VBox>
+        </HBox>
+
+        <!-- Buttons -->
+        <HBox alignment="CENTER" spacing="20">
+            <Button fx:id="pauseButton" onAction="#pauseGame" prefWidth="150" prefHeight="50" style="-fx-font-size: 16px;"/>
+            <Button fx:id="restartButton" text="Restart" onAction="#newGame" prefWidth="150" prefHeight="50" style="-fx-font-size: 16px;"/>
+            <Button text="Keybindings" onAction="#onShowKeybindings" prefWidth="150" prefHeight="50" style="-fx-font-size: 16px;"/>
+            <Button text="Menu" onAction="#goBackToMenu" prefWidth="150" prefHeight="50" style="-fx-font-size: 16px;"/>
+        </HBox>
+
+    </VBox>
+
+    <!-- Game Over Panel on Top -->
+    <GameOverPanel fx:id="gameOverPanel" visible="false" StackPane.alignment="CENTER"/>
+
+</StackPane>
